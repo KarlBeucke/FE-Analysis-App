@@ -1,0 +1,35 @@
+Model Name
+3DOF Sine Function Excitation 
+
+Spatial Dimension
+2	1
+
+Nodes
+n0	2	0
+n1	1	0
+n2	0	0
+
+Elements2D2Nodes
+e00	n0	n1	c0
+e01	n1	n2	c1
+
+// name, conductivity, density*specificHeat
+Material
+c0	1	2
+c1	0.01	0
+
+BoundaryConditions
+bc	n2	0
+
+Eigensolutions
+2DOFEigen	2
+
+// id, tmax, dt, alfa
+TimeIntegration
+3DOFSineExcitation	400	0.99	0
+
+// Boundary Condition at Node n0, Typ2 2: Amplitude, Frequency, Phase Angle
+TimeDependent BoundaryConditions
+R1	n0	harmonic	1	0.03	0
+
+end

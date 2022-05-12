@@ -1,0 +1,139 @@
+// Keywords mark specified content, Tabulators separate Input items
+
+// following Keyword "Model Name" any arbitrary name identifies the Model
+Model Name
+Truss bridge
+
+// following the Keyword "Spatial Dimension" one Integer specifies the dimensionality of the Model e.g. 2D or 3D, and another the number of Nodal degrees of freedom
+Spatial Dimension
+2	3
+
+// ************************************ Nodes *****************************
+// following the Keyword "Nodes" an arbitrary number of lines will specify a Nodal Identifier and corresponding Coordinates for each Node
+// a line containing a single Integer will cause to change the Number of Nodal-Degrees-Of-Freedom for all following Nodes accordingly, e.g. 3 to 2 NDOF
+Nodes
+1	0			// Node 1 in 1D with 1 coordinate
+1	0	0		// Node 1 in 2D with 2 coordinates
+1	0	0	0	// Node 1 in 3D with 3 coordinates
+2				// change NDOF to 2 DOF/Node
+2	4	5		// Node 2 in 2D
+3				// change NDOF to 3 DOF/Node
+3	0	5		// Node 3 in 2D
+
+// unique Nodal Identifiers may generated with a maximum of 100 per direction per Node
+// IDzzyyxx, e.g. ID000000 - ID999999
+// additional Keyword "Nodes Group"
+Nodes Group
+n				// initial for identifiers of group Nodes 
+0	3			// 1. identifier generated "n000000" with coordinate 0;3
+0	2			// 2. identifier generated "n000001" with coordinate 0;2
+
+// additional Keyword "Equidistant Node Mesh"
+Equidistant Node Mesh
+N	0.	2.	12							// 1D, Start 0., 12 Nodes with spacing 2., Id N000000 - N000011
+A	0.	1.	3	1.	1.	3				// 2D, (Start x=0, spacing 1.)3 Nodes * 3 Nodes(Start y=1., spacing 1.), Id A000000 - A000202
+Z	0.	1.	3	1.	1.	3	2.	1.	3	// 3D, (Start x=0, spacing 1.)3 Nodes * 3 Nodes(Start y=1., spacing 1.) * 3 Nodes(Start z=2., spacing 1.), Id Z000000 - Z020202
+
+// additional Keyword "Variable Node Mesh"
+Variable Node Mesh
+0.	1.	3.	6.	// Id X000000 - X000303, 4*4 Nodes with 4 Nodal coordinates in x und y
+X	0.	0.		// Initial identifier X with mesh origin at x=0., y=0.
+
+// ************************************ Elements *****************************
+//
+// Keyword "Truss" is followed by an arbitrary number of lines each containing identifiers for
+// ElementName,  Nodename1, Nodename2, CrossSection, Material
+Truss
+e00	n0	n1	c1	iso
+
+// Keyword "Beam" is followed by an arbitrary number of lines each containing identifiers for
+// ElementName,  Nodename1, Nodename2, CrossSection, Material
+Beam
+e1	1	2	c0	EIc
+
+// Keyword "BeamHinged" is followed by an arbitrary number of lines each containing identifiers for
+// ElementName,  Nodename1, Nodename2, CrossSection, Material, hinge at 1st or 2nd Node
+BeamHinged
+e2	2	3	c0	EIc	2
+e3	3	4	c0	EIc	1
+
+// Keyword "SpringElement" is followed by an arbitrary number of lines each containing identifiers for
+// ElementName,  Nodename  and Materialname
+SpringElement
+spring	k1	m2
+
+// ************************************ ElementCrossSection *****************************
+// Keyword "CrossSection" is followed by an arbitrary number of lines each containing identifiers for
+// CrossSectionName, and up to 2 values for Area and Moent of Inertia Ixx
+CrossSection
+c0	5e-4	2e-8
+
+// ************************************ Material *****************************
+// Keyword "Material" is followed by an arbitrary number of lines each containing identifiers for
+// MaterialName, and up to 3 values for Modulus of Elasticity, Poisson's number and Mass resp. SpringElementname and 3 stiffness values Rx, Ry, Rphi
+Material
+EIc	2e8	0
+m1	2e8
+m2	feder	0	0	100
+
+// ************************************ Loads *****************************
+// Keyword "NodeLoad" is followed by an arbitrary number of lines each containing identifiers for
+// NodeLoadName, Nodename and 3 values for Nx, Ny, M
+NodeLoad
+nl1	2	100	0	0
+
+// Keyword "PointLoad" is followed by an arbitrary number of lines each containing identifiers for
+// PointLoadName, Elementname 3 values for p1N, p1Q and offset on element
+PointLoad
+pl1	e2	0	100	0,5
+
+// Keyword "LineLoad" is followed by an arbitrary number of lines each containing identifiers for
+// LineLoadname, Elementname und 4 values for q1x, q1y, q2x, q2y
+LineLoad
+q	e1	0	-2	0	-2
+
+// ************************************ Support Conditions *****************************
+// Keyword "Support" is followed by an arbitrary number of lines each containing identifiers for
+// Supportname, Nodename and a Text string for x-, y- and rotational-constraints
+Support
+Support1	1	xyr
+Support2	4	x
+
+
+// ************************************ Eigensolutions *****************************
+// Keyword "Eigensolutions" is followed by a line containing
+// EigensolutionName, number of Eigensolutions to be evaluated
+Eigensolutions
+2DOFEigen	2
+
+// ************************************ TimeIntegration *****************************
+// Keyword "TimeIntegration" is followed by a line containing
+// TimeintegrationName, max. integration time, time interval, integration method, integration parameter1 and 2
+// id, tmax, dt, method, par1, par2
+TimeIntegration
+SixDOFGroundExcitation	125	0.4	1	0.25	0.5
+
+// ******************************* modal Damping *****************************
+// Keyword "Damping" is followed by a line containing modal damping ratios
+// a single value is interpreted as a uniform damping ratio for all Eigenstates
+// otherwise a separate value may be entered for each Eigenstate
+Damping
+0.02
+
+// ******************************* InitialConditions *****************************
+// Keyword "InitialConditions" is followed by a line containing 3, 5 or 7 values
+// for NodeName and 2 values each for inital value and respective nodal degree of freedom
+InitialConditions
+n0	1	0
+n1	0.9	0
+
+// ************************************ TimeDependentNodeLoads *****************************
+// Keyword "TimeDependentNodeLoads" is followed by a line containing
+// loadName, Indicator for ground excitation and nodal degree of freedom
+// an additional line containing a single value for file name, alternatively 3 values for amplitude, frequency and phase angle
+// or alternatively time,force-pairs of values for linearly interpolated excitation intervals
+TimeDependentNodeLoads
+zk0	ground	0
+0;0	0.8;1	1.6;0	3.2;-1	4.8;0	5.6;1	6.4;0
+
+end

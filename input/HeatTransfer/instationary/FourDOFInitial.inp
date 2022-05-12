@@ -1,0 +1,37 @@
+Model Name
+4DOF initial, time dependent boundary temperature
+
+Spatial Dimension
+2	1
+
+Nodes
+n01	0	0
+n02	1	0
+n03	2	0
+n04	3	0
+
+Material
+c1	1	2
+
+Elements2D2Nodes
+te00	n01	n02	c1
+te01	n02	n03	c1
+te02	n03	n04	c1
+
+BoundaryConditions
+s01	n01	30
+
+Eigensolutions
+4DOFEigen	2
+
+// id, tmax, dt, alfa
+TimeIntegration
+4DOFTimeInitial	50	0.5	0.8
+
+Initial Temperatures
+all	30
+
+TimeDependent BoundaryConditions
+bc2	n04	linear	0;30	5;10
+
+end

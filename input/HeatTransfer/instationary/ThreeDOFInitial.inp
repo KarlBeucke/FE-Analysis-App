@@ -1,0 +1,35 @@
+Model Name
+2DOF Anfangstemperatur, keine Anregung
+
+Spatial Dimension
+2	1
+
+Nodes
+n0	2	0
+n1	1	0
+n2	0	0
+
+Elements2D2Nodes
+e00	n0	n1	c0
+e01	n1	n2	c1
+
+// name, conductivity, density*specificHeat
+Material
+c0	1	2
+c1	0.01	0
+
+BoundaryConditions
+R0	n2	0
+
+Eigensolutions
+2DOFEigen	2
+
+// id, tmax, dt, alfa
+TimeIntegration
+2DOFInitialTemperature	400	0.99	0
+
+Initial Temperatures
+n0	1
+n1	1
+
+end

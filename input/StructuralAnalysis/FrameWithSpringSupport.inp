@@ -1,0 +1,44 @@
+Model Name
+Frame with Spring Support
+
+Spatial Dimension
+2	3
+
+Nodes
+k1	0	5
+k2	4	5
+k3	6	5
+2
+k4	4	0
+
+Beam
+e1	k1	k2	c0	m1
+e2	k2	k3	c0	m1
+
+Truss
+e3	k4	k2	c1	m1
+
+SpringElement
+RotationSpring	k1	m2
+
+CrossSection
+c0	5e-4	2e-7
+c1	5e-4
+
+Material
+m1	2e8
+m2	RotationSpring	0	0	100
+
+//NodeLoad
+nl1	k2	0	0	20
+nl2	k3	0	-10	0
+
+LineLoad
+q	e1	0	-10	0	-10
+
+Support
+support1	k1	xy
+support2	k4	xy
+support3	k3	y
+
+end

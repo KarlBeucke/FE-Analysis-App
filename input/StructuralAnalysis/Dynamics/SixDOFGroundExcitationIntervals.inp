@@ -1,0 +1,47 @@
+Model Name
+6DOF Ground Excitation Intervals
+
+Spatial Dimension
+2	2
+
+Nodes
+2
+n0	2	0
+n1	1	0
+n2	0	0
+
+Truss
+e00	n0	n1	c0	iso0
+e01	n1	n2	c1	iso1
+
+//Id	CrossSection Area(m^2)
+CrossSection
+c0	0.01
+c1	1
+
+//Id	Youngs Modulus(kN/m^2)	Poisson's Number	 Concrete density(t/m^3)
+Material
+iso0	1	0	2
+iso1	1	0	1.98
+
+Support
+Support0	n2	xy
+Support1	n1	y
+Support2	n0	y
+
+Eigensolutions
+2DOFEigen	2
+
+// id, tmax=125, dt=0.4, method=1, par1=0.25, par2=0.5
+TimeIntegration
+SixDOFGround	125	0.4	1	0.25	0.5
+
+// time dependent node load Linear Intervals
+TimeDependentNodeLoads
+tdl0	ground	0
+0;0	0.8;1	1.6;0	3.2;-1	4.8;0	5.6;1	6.4;0
+
+Damping
+0.01
+
+end

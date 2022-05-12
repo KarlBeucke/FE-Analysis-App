@@ -1,0 +1,38 @@
+Model Name
+Chimney with 4 lumped masses
+
+Spatial Dimension
+2	3
+
+Nodes
+n0	0	0
+n1	0	20
+n2	0	40
+n3	0	60
+n4	0	80
+
+Beam
+e0	n0	n1	c1	iso
+e1	n1	n2	c1	iso
+e2	n2	n3	c1	iso
+e3	n3	n4	c1	iso
+
+
+//Id	CrossSection Area(m^2)	Moment of Inertia(m^4)
+CrossSection
+c1	5.0	17.6
+
+//Id	Modulus of Elasticity(kN/m^2)	Poisson's number	 density Concrete(t/m^3)
+Material
+iso	3e7	0	2.5
+
+Support
+Support0	n0	xyr
+
+NodeLoad
+P4	n4	 4000	0	0
+P3	n3	 3000	0	0
+P2	n2	 2000	0	0
+P1	n1	 1000	0	0
+
+end

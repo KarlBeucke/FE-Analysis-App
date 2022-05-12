@@ -1,0 +1,36 @@
+Model Name
+hinged Frame
+
+Spatial Dimension
+2	3
+
+Nodes
+1	0	0
+2	0	5
+2
+3	4	5
+3
+4	4	0
+
+Beam
+e1	1	2	c0	EIc
+
+// hinge at second or first node
+BeamHinged
+e2	2	3	c0	EIc	2
+e3	3	4	c0	EIc	1
+
+CrossSection
+c0	5e-2	2e-5
+
+Material
+EIc	2e8	0
+
+NodeLoad
+nl1	2	100	0	0
+
+Support
+Support1	1	xyr
+Support2	4	xyr
+
+end

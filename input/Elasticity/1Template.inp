@@ -1,0 +1,105 @@
+// Keywords mark specified content, Tabulators separate Input items
+
+// following Keyword "Model Name" any arbitrary name identifies the Model
+Model Name
+Cantilever
+
+// following the Keyword "Spatial Dimension" one Integer specifies the dimensionality of the Model e.g. 2D or 3D, and another the number of Nodal degrees of freedom
+Spatial Dimension
+2	3
+
+// ************************************ Nodes *****************************
+// following the Keyword "Nodes" an arbitrary number of lines will specify a Nodal Identifier and corresponding Coordinates for each Node
+// a line containing a single Integer will cause to change the Number of Nodal-Degrees-Of-Freedom for all following Nodes accordingly, e.g. 3 to 2 NDOF
+Nodes
+1	0			// Node 1 in 1D with 1 coordinate
+1	0	0		// Node 1 in 2D with 2 coordinates
+1	0	0	0	// Node 1 in 3D with 3 coordinates
+2				// change NDOF to 2 DOF/Node
+2	4	5		// Node 2 in 2D
+3				// change NDOF to 3 DOF/Node
+3	0	5		// Node 3 in 2D
+
+// unique Nodal Identifiers may generated with a maximum of 100 per direction per Node
+// IDzzyyxx, e.g. ID000000 - ID999999
+// additional Keyword "Nodes Group"
+Nodes Group
+n				// initial for identifiers of group Nodes 
+0	3			// 1. identifier generated "n000000" with coordinate 0;3
+0	2			// 2. identifier generated "n000001" with coordinate 0;2
+
+// additional Keyword "Equidistant Node Mesh"
+Equidistant Node Mesh
+N	0.	2.	12							// 1D, Start 0., 12 Nodes with spacing 2., Id N000000 - N000011
+A	0.	1.	3	1.	1.	3				// 2D, (Start x=0, spacing 1.)3 Nodes * 3 Nodes(Start y=1., spacing 1.), Id A000000 - A000202
+Z	0.	1.	3	1.	1.	3	2.	1.	3	// 3D, (Start x=0, spacing 1.)3 Nodes * 3 Nodes(Start y=1., spacing 1.) * 3 Nodes(Start z=2., spacing 1.), Id Z000000 - Z020202
+
+// additional Keyword "Variable Node Mesh"
+Variable Node Mesh
+0.	1.	3.	6.	// Id X000000 - X000303, 4*4 Nodes with 4 Nodal coordinates in x und y
+X	0.	0.		// Initial identifier X with mesh origin at x=0., y=0.
+
+// ************************************ Elements *****************************
+//
+// keyword "Element2D3" is followed by an arbitrary number of lines with
+// ElementId,  NodeId1, NodeId 2, NodeId 3, CrossSectionId, MaterialId
+Element2D3
+ELower00	n00	n10	n11	thick	planeStress
+
+// keyword "Element3D8" is followed by an arbitrary number of lines with
+// ElementId,  NodeId1 bis NodeId8, Material
+Element3D8
+e1	1	2	3	4	5	6	7	8	EIc
+
+// keyword "3D8ElementMesh" is followed by an arbitrary number of lines with
+// ElementInitial,  NodeInitial, number Intervals, Material
+3D8ElementMesh
+E	N	4	iso
+
+// ************************************ Element CrossSection *****************************
+// keyword "CrossSections" is followed by an arbitrary number of lines with
+// CrossSectionId and 1 value for element thickness
+CrossSections
+thick	1
+
+// ************************************ Material *****************************
+// keyword "Material" is followed by an arbitrary number of lines with
+// MaterialId and up to 3 values for modulus of elasticity, Poissons-number and shear modulus
+Material
+planeStress	3e7	0
+iso	2.4	0.2	1
+
+// ************************************ Loads *****************************
+// keyword "NodeLoads" is followed by an arbitrary number of lines with
+// NodeLoadId, Nodead und 3 values for px, py, pz
+NodeLoads
+ZLOAD	N000000	0	0	0.25
+
+// keyword "LineLoads" is followed by an arbitrary number of lines with
+// LineLoadId, ElementId and 4 values for load values in x and y at Node1 and 2
+LineLoads
+q	e1	0	-2	0	-2
+
+// ************************************ BoundaryCondition *****************************
+// keyword "BoundaryCondition Nodes" is followed by an arbitrary number of lines with
+// BoundaryConditionId, NodeId, Text for x-, y-, z-constraints with corresponding constraint values
+BoundaryCondition Nodes
+SN00	n00	xy	0	0
+
+// ************************************ BoundaryCondition Faces *****************************
+// keyword "BoundaryCondition Faces" is followed by an arbitrary number of lines with
+// BoundaryConditionInitial, BoundaryCondition Face, NodeInitial, number of Nodes, direction
+BoundaryCondition Faces
+S	X0	N	5	x
+S	Y0	N	5	y
+
+// ************************************ BoundaryCondition Boussinesq *****************************
+// keyword "BoundaryCondition Boussinesq" is followed by a single with nodal spacings
+// followed by an arbitrary number of lines with BoundaryConditionInitial, BoundaryConditionFace, NodeInitial, direction
+BoundaryCondition Boussinesq
+0	1	3	7	15
+B	XMax	N	x
+B	YMax	N	y
+B	ZMax	N	z
+
+end

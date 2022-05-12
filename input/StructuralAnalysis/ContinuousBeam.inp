@@ -1,0 +1,35 @@
+Model Name
+Continuous Beam
+
+Spatial Dimension
+2	3
+
+Nodes
+n0	0	0
+n1	5	0
+n2	10	0
+
+Beam
+e0	n0	n1	c0	m0
+e1	n1	n2	c0	m0
+
+//Id	CrossSection area(m^2)	Moment of Inertia(m^4)
+CrossSection
+c0	0.12	0.0036
+
+//Id	Modulus of Elasticity(kN/m^2)	Poisson's number  density of concrete(t/m^3)
+Material
+m0	2.1e7	0.22	0.175
+
+Support
+Support0	n0	xyr
+Support1	n1	y
+Support2	n2	y
+
+PointLoad
+P0	e0	0	-1000	0.5
+
+LineLoad
+L0	e0	 0	-100	0	-100
+
+end

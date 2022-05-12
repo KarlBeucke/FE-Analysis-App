@@ -1,0 +1,148 @@
+// Keywords mark specified content, Tabulators separate Input items
+
+// following Keyword "Model Name" any arbitrary name identifies the Model
+Model Name
+Chimney 2D
+
+// following the Keyword "Spatial Dimension" one Integer specifies the dimensionality of the Model e.g. 2D or 3D, and another the number of Nodal degrees of freedom
+Spatial Dimension
+2	3
+
+// ************************************ Nodes *****************************
+// following the Keyword "Nodes" an arbitrary number of lines will specify a Nodal Identifier and corresponding Coordinates for each Node
+// a line containing a single Integer will cause to change the Number of Nodal-Degrees-Of-Freedom for all following Nodes accordingly, e.g. 3 to 2 NDOF
+Nodes
+1	0			// Node 1 in 1D with 1 coordinate
+1	0	0		// Node 1 in 2D with 2 coordinates
+1	0	0	0	// Node 1 in 3D with 3 coordinates
+2				// change NDOF to 2 DOF/Node
+2	4	5		// Node 2 in 2D
+3				// change NDOF to 3 DOF/Node
+3	0	5		// Node 3 in 2D
+
+// unique Nodal Identifiers may generated with a maximum of 100 per direction per Node
+// IDzzyyxx, e.g. ID000000 - ID999999
+// additional Keyword "Nodes Group"
+Nodes Group
+n				// initial for identifiers of group Nodes 
+0	3			// 1. identifier generated "n000000" with coordinate 0;3
+0	2			// 2. identifier generated "n000001" with coordinate 0;2
+
+// additional Keyword "Equidistant Node Mesh"
+Equidistant Node Mesh
+N	0.	2.	12							// 1D, Start 0., 12 Nodes with spacing 2., Id N000000 - N000011
+A	0.	1.	3	1.	1.	3				// 2D, (Start x=0, spacing 1.)3 Nodes * 3 Nodes(Start y=1., spacing 1.), Id A000000 - A000202
+Z	0.	1.	3	1.	1.	3	2.	1.	3	// 3D, (Start x=0, spacing 1.)3 Nodes * 3 Nodes(Start y=1., spacing 1.) * 3 Nodes(Start z=2., spacing 1.), Id Z000000 - Z020202
+
+// additional Keyword "Variable Node Mesh"
+Variable Node Mesh
+0.	1.	3.	6.	// Id X000000 - X000303, 4*4 Nodes with 4 Nodal coordinates in x und y
+X	0.	0.		// Initial identifier X with mesh origin at x=0., y=0.
+
+// ************************************ Elements *****************************
+// Keyword "Elements2D2Nodes" is followed by an arbitrary number of lines with
+// ElementName,  NodeName1, NodeName2, Material
+Elements2D2Nodes
+e00	n00	n01	iso
+
+// "Elements2D3Nodes" is followed by an arbitrary number of lines with
+// ElementName,  NodeName1, NodeName2, NodeName3, Material
+Elements2D3Nodes
+e00	n00	n01	n03	iso
+
+// "Elements2D4Nodes" is followed by an arbitrary number of lines with
+// ElementName,  NodeName1, NodeName2, NodeName3, NodeName4, Material
+Elements2D4Nodes
+e00	n00	n01	n03	n04	iso
+
+// "Elements3D8Nodes" is followed by an arbitrary number of lines with
+// ElementName,  NodeName1, NodeName2, NodeName3, NodeName4, NodeName5, NodeName6, NodeName7, NodeName8, Material
+Elements3D8Nodes
+e00	n00	n01	n03	n04n05	n06	n07	n08	iso
+
+
+// ************************************ Material *****************************
+// Keyword "Material" is followed by an arbitrary number of lines each containing identifiers for
+// MaterialName, and 1, 2, 3 or 4 values for 
+// 1 value for conductivity in 1 direction
+// or 2 values for conductivity and conductivity*density
+// or 3 values for conductvity in 3 directions
+// or 4 values for conductivity in 3 directions and conductivity*density
+Material
+mat0	0.3	1
+mat1	1.4	1932000
+
+// ************************************ Loads *****************************
+// Keyword "NodeLoads" is followed by an arbitrary number of lines each containing identifiers for
+// NodeLoadName, NodeName and 1 value for HeatLoad
+NodeLoads
+kl0	n00	20
+
+// Keyword "LineLoads" is followed by an arbitrary number of lines each containing identifiers for
+// LineLoadname, StartNodeName, EndNodeName and 2 values for HeatLoadValue at start and end node
+LineLoads
+ll0	n00	n01	10	10
+
+// Keyword "ElementLoads3" is followed by an arbitrary number of lines each containing identifiers for
+// ElementLoadname, ElementID and 3 values for HeatLoadValue at element nodes
+ElementLoads3
+el0	e00	10	10	10
+
+// Keyword "ElementLoads4" is followed by an arbitrary number of lines each containing identifiers for
+// ElementLoadname, ElementID and 4 values for HeatLoadValue at element nodes
+ElementLoads4
+el0	e00	10	10	10	10
+
+// ************************************ Boundary Conditions *****************************
+// Keyword "BoundaryConditions" is followed by an arbitrary number of lines each containing identifiers for
+// BoundaryConditionName, Nodename and a predefined heat value
+BoundaryConditions
+bc00	n00	10
+
+// ************************************ Eigensolutions *****************************
+// "Eigensolutions"
+// EigensolutionName, number of Eigenstates
+Eigensolutions
+Eigen	2
+
+// ************************************ TimeIntegration *****************************
+// "TimeIntegration"
+// TimeIntegrationName, tmax, deltaT, Alfa
+TimeIntegration
+ConstantLowerLeft	30	0.5	0.8
+
+// ************************************ Initial Temperatures *****************************
+// "Initial Temperatures"
+// "stationary solution" or sequence of "nodeID incl. all" and temperature value
+Initial Temperatures
+stationary solution
+all	30
+
+// ************************************ TimeDependent BoundaryConditions *****************************
+// "TimeDependent BoundaryConditions"
+// BoundaryConditionName, NodeName, value
+// or BoundaryConditionName, NodeName, file
+// or BoundaryConditionName, NodeName, linear followed by pairs of values for Time;Temperature
+TimeDependent BoundaryConditions
+bc0	n00	file
+bc2	n04	linear	0;30	5;10
+
+// ************************************ TimeDependentNodeLoad *****************************
+// "TimeDependent NodeLoads"
+// NodeLoadName, NodeName, value
+// or BoundaryConditionName, NodeName, file
+// or BoundaryConditionName, NodeName, linear followed by pairs of values for Time;Temperature
+TimeDependentNodeLoad
+bc0	n00	file
+bc2	n04	linear	0;30	5;10
+
+// ************************************ TimeDependentElementLoad *****************************
+// "TimeDependent ElementLoads"
+// ElementLoadName, ElementName, value
+// or ElementLoadName, ElementName, file
+// or ElementLoadName, ElementName, linear followed by pairs of values for Time;Temperature
+TimeDependentElementLoad
+bc0	n00	file
+bc2	n04	linear	0;30	5;10
+
+end

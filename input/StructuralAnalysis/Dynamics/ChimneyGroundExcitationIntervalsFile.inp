@@ -1,0 +1,50 @@
+Model Name
+Chimney with 4 Lumped Masses
+
+Spatial Dimension
+2	3
+
+Nodes
+n0	0	0
+n1	0	20
+n2	0	40
+n3	0	60
+n4	0	80
+
+Beam
+e0	n0	n1	c1	iso
+e1	n1	n2	c1	iso
+e2	n2	n3	c1	iso
+e3	n3	n4	c1	iso
+
+//Id	CrossSection Area(m^2)	Moment of Inertia(m^4)
+CrossSection
+c1	5.0	17.6
+
+//Id	Youngs Modulus(kN/m^2)	Poisson's Number	 Concrete density(t/m^3)
+Material
+iso	3e7	0	2.5
+
+Support
+Support0	n0	xyr
+Support1	n1	y
+Support2	n2	y
+Support3	n3	y
+Support4	n4	y
+
+Eigensolutions
+Eigen	4
+
+// id, tmax, dt, method, par1, par2
+TimeIntegration
+Chimney	30	0.05	1	0.25	0.5
+
+Damping
+0.02
+
+// LineareIntervalle.acc
+TimeDependentNodeLoads
+tdl0	ground	0
+LinearIntervals.acc
+
+end
