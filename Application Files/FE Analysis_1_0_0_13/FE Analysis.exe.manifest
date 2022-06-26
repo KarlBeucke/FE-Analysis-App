@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="FE Analysis.exe" version="1.0.0.13" publicKeyToken="c24a2852fad18077" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="FE Analysis" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="FE Analysis.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC-Manifestoptionen
+          Wenn Sie die Zugangsebene für das Windows-Benutzerkonto ändern möchten, ersetzen Sie den 
+          requestedExecutionLevel-Knoten durch eines der folgenden Elemente.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Löschen Sie den requestedExecutionLevel-Knoten, wenn Sie 
+         zum Gewährleisten der Abwärtskompatibilität die Datei- und Registrierungsvirtualisierung verwenden möchten.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FE Analysis.exe" size="572864">
+      <assemblyIdentity name="FE Analysis" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>TdO7Fbox0lXUf1tAenPyTjnA6e1aiCxoIagtadHaF+A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FEALibrary.dll" size="92672">
+      <assemblyIdentity name="FEALibrary" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vaqUV/hKd8N9ei2nuq+UWJH7+1Vxfro5FVDeqAm4BYE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="FE Analysis.exe.config" size="181">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>96kcQYUg+f6bZD7g5Me0WbkBGQDiY/roXIHJ/S0vwoM=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=KARL-LENOVO\Karl" issuerKeyHash="081e7d07a15b6e0de1c29ae6cf6e85de5189429b" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>+xrz8o2LKV6QAXzHVoaZQryaE2olX4yTOdWe5v748yU=</DigestValue></Reference></SignedInfo><SignatureValue>Hue+Mu8c3q7uuUwuiW3qPsMb4bnfWk+B6ytxZ0SvU1NBitlYP+YjD92nij/YmvJQE9TDy5aUjhbvaA3tPwYY3R3eMXl24WlMdiq4ptFd6fnGf+6bF+CzXEXeahUo8AaYGB9bXywSo9QyAd8re+8p/tu+K3buL+SeSDrdd6mUVNI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>o2QJ+swIVe/B2PoRr2WdAimUQ5VDsAyAwCj4BtU9LIdwkYvlEVbnJrIgzkj/loFU+iM1dRb2U+d+ATi7w0Bwq3Nj9rW/CV6LguChlpuWUqDiF/8kUAubBBWqwPPop+Wj+FhS+FAJRO+u/thWzzqKenzfvoKe3J2B0YHL+6ALmQE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="25f3f8fee69ed539938c5f256a139abc42998656c77c01905e298b8df2f31afb" Description="" Url=""><as:assemblyIdentity name="FE Analysis.exe" version="1.0.0.13" publicKeyToken="c24a2852fad18077" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=KARL-LENOVO\Karl</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>6Xcc/Dyl1rJZyAGZB0jb6BkMSJtP2RgjkqLFYpgTMbg=</DigestValue></Reference></SignedInfo><SignatureValue>Mg/NkiYQuPNv/DTho7QTBm1QEoETupnXDygSDAIJKqJJpBk1LBjPa7q0CQEHxfeEq325MWLT+pr1s0gAAb5kQbTtWhiCQKNkEq/AJOeKvWr3xmP1/QnVx2v7UZAUaR557TVc4WueVcXz1QzGplpWZI1PwxYoGEdJ46QPdXQzDAc=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>o2QJ+swIVe/B2PoRr2WdAimUQ5VDsAyAwCj4BtU9LIdwkYvlEVbnJrIgzkj/loFU+iM1dRb2U+d+ATi7w0Bwq3Nj9rW/CV6LguChlpuWUqDiF/8kUAubBBWqwPPop+Wj+FhS+FAJRO+u/thWzzqKenzfvoKe3J2B0YHL+6ALmQE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQSpWsbPTtqaRHwE82lKxZdTANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAASwBBAFIATAAtAEwARQBOAE8AVgBPAFwASwBhAHIAbDAeFw0yMTA5MDMxNTI0NThaFw0yMjA5MDMyMTI0NThaMCsxKTAnBgNVBAMeIABLAEEAUgBMAC0ATABFAE4ATwBWAE8AXABLAGEAcgBsMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCjZAn6zAhV78HY+hGvZZ0CKZRDlUOwDIDAKPgG1T0sh3CRi+URVucmsiDOSP+WgVT6IzV1FvZT534BOLvDQHCrc2P2tb8JXouC4KGWm5ZSoOIX/yRQC5sEFarA8+in5aP4WFL4UAlE767+2FbPOop6fN++gp7cnYHRgcv7oAuZAQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAISXPTETZv5QB+tkgMygoICzas5YALlghmROqvDhFCAUU4x6Wn86RfOrbqJEVlnAB8KsQ2oMcsXAJX/8Y5j99YmHMN3yJkXIX2qoNyVGx7jnoay6eYrHgr1rnFz6YhKHOvMy4r0AKiIiuAklJEtKjHqUc59QqPtSPuW9lKSOJJ+S</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
