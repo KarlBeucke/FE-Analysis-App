@@ -53,7 +53,7 @@ EUpper31	n41	n42	n32	thick	planeStress
 EUpper41	n51	n52	n42	thick	planeStress
 EUpper51	n61	n62	n52	thick	planeStress
 
-CrossSections
+CrossSection
 thick	1
 
 Material
