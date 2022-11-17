@@ -27,7 +27,7 @@ Support1	n1	y
 Support2	n2	y
 
 PointLoad
-P0	e0	0	-1000	0.5
+P0	e0	0	-200	0.5
 
 LineLoad
 L0	e0	 0	-100	0	-100

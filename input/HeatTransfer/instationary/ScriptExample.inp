@@ -54,6 +54,9 @@ Initial Temperatures
 stationary solution
 
 TimeDependent BoundaryConditions
+rb1	n00	constant	10
+rb2	n01	constant	10
+rb3	n02	constant	10
 bc1	n06	linear	0;0	15;20	20;30
 bc2	n10	linear	0;0	15;20	20;30
 
