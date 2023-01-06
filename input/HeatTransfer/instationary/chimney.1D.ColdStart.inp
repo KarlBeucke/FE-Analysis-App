@@ -66,7 +66,7 @@ s01	n22	0
 Eigensolutions
 DOFEigen	5
 
-// id. tmax. dt. alfa
+// id. tmax. dt. alfa  25200s/60/60=7h
 TimeIntegration
 coldStart	25200	5	0.5
 
